@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//PL" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns='http://www.w3.org/1999/xhtml' xml:lang='pl' lang='pl'>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title><%= @meta_tag.title -%></title>
+<meta name="description" content="<%= @meta_tag.description -%>" />
+<meta name="keywords" content="<%= @meta_tag.keywords -%>" />
+<%= javascript_include_tag 'mootools-1.2.1-core-yc' %>
+<%= javascript_include_tag 'mootools-1.2-more' %>
+<%= javascript_include_tag 'jd.gallery' %>
+<%= javascript_include_tag 'jd.gallery.set' %>
+<%= javascript_include_tag 'ReMooz' %>
+<% #  stylesheet_link_tag 'style' %>
+<%= stylesheet_link_tag 'main' %>
+<%= stylesheet_link_tag 'jd.gallery' %>
+<%= stylesheet_link_tag 'ReMooz' %>
+</head>
+
+<body>
+  <div id="wrapper">
+	<div id="header">
+		<div id="menu">
+          <ul>
+			<% Subpage.find(:all, :conditions => "parent_id is null", :order => 'page_order').each do |subpage| %>
+				<li><%= link_to subpage.name, show_page_url(:url_name => subpage.url_name) -%></li>
+			<% end %>
+		  </ul>
+        </div>
+        <div class="clear"></div>
+    </div>
+	<div id="main">
+      <div id="sidebar">
+        <div class="block">
+          <h2><%= Subpage.contact.header %></h2>
+          <div class="page"><%= Subpage.contact.description %></div>
+        </div>
+        <ul>
+          <% Subpage.all(:include => :parent).select{|p| p.parent and p.parent.url_name == 'oferta'}.each do |page|  # FIX %>
+          <li><%= link_to image_tag(page.logo.url(:thumb)), show_page_url(:url_name => page.url_name) %></li>
+          <% end %>
+        </ul>
+      </div>
+	  <div id="content">
+        <%= yield -%>
+      </div>
+      <div class="clear"></div>
+	</div>		
+	<div id="footer"></div>
+  </div>
+</body>
+</html>

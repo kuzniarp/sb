@@ -1,0 +1,18 @@
+<h1><%= @page.header %></h1>
+<div class="page">
+<%= @page.description %>
+<% if @page.class == Gallery %>
+	<ul class="gallery_links">
+	<% @page.albums.each do |album| %>
+		<li><%= link_to album.name, show_album_url(album.get_link_options) -%></li>
+	<% end %>
+	</ul>
+<% end %>
+<% unless @page.children.empty? %>
+  <ul>
+  <% @page.children.each do |page| %>
+    <li><%= link_to page.name, show_page_url(:url_name => page.url_name) %></li>
+  <% end %>
+  </ul>
+<% end %>
+</div>

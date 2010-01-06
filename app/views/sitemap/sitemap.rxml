@@ -1,0 +1,26 @@
+xml.instruct!
+xml.urlset "xmlns" => "http://www.sitemaps.org/schemas/sitemap/0.9" do
+	@subpages.each do |subpage|
+		xml.url do
+			xml.loc show_page_url(:url_name => subpage.url_name, :only_path => false)
+			xml.changefreq("daily")
+			xml.priority("1.0")
+		end
+		if subpage.class == Gallery and !subpage.albums.empty?
+			subpage.albums.each do |album|
+				xml.url do
+					xml.loc show_album_url(:subpage_url_name => album.gallery.url_name, :url_name => album.url_name, :only_path => false)
+					xml.changefreq("daily")
+					xml.priority("0.5")
+				end
+				album.photos.each do |photo|
+					xml.url do
+						xml.loc show_photo_url(photo.get_link_options, :only_path => false)
+						xml.changefreq("daily")
+						xml.priority("0.5")
+					end
+				end
+			end
+		end
+	end
+end

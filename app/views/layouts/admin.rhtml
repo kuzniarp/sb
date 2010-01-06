@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//PL" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns='http://www.w3.org/1999/xhtml' xml:lang='pl' lang='pl'>
+<head>
+
+<!-- ------------------------------------------------------------ -->
+<!-- ************************************************************ -->
+<!-- * Graphics and xhtml/css code                              * -->
+<!-- * Copyright (c) 2007, Ondrej Pohorsky  All rights reserved * -->
+<!-- *                                                          * -->
+<!-- * author: Ondrej Pohorsky                                  * -->
+<!-- * url:    http://www.poho.cz                               * -->
+<!-- * mail:   poho@poho.cz                                     * -->
+<!-- * icq:    190484844                                        * -->
+<!-- *                                                          * -->
+<!-- * This work is under BSD license                           * -->
+<!-- ************************************************************ -->
+<!-- ------------------------------------------------------------ -->
+
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta http-equiv="content-language" content="pl" />
+<title>Admin</title>
+<meta name="author" content="Ondrej Pohorsky; http://www.poho.cz; poho@poho.cz" />
+<link rel="shortcut icon" href="./design/img/favicon.ico" type="image/x-icon" />
+<%= javascript_include_tag :fckeditor %>
+<%= javascript_include_tag 'prototype' %>
+<%= javascript_include_tag 'scriptaculous' %>
+<% #  stylesheet_link_tag 'main' %>
+<% #  stylesheet_link_tag 'admin' %>
+<%= stylesheet_link_tag 'default' %>
+</head>
+<body>
+  <div id="witti">
+  
+    <div id="header">
+      <!-- <a href="./index.html" class="logo"><span>Witti</span></a> -->
+      <p class="userinfo"><strong>Admin</strong> | <%= link_to 'Wyloguj', :controller => 'home', :action => 'logout' %></p>
+      <div class="cleaner"></div>
+    </div><!-- header -->
+    
+    <div id="main">
+      <%= render :partial => 'admin/home/menu' %>      
+      <div id="content">
+        <%= yield -%>
+      </div><!-- content -->
+      <div class="cleaner"></div>
+    </div><!-- main -->
+
+    <div id="footer">
+      <p>design: <a href="http://www.poho.cz/">Ondřej Pohorský</a></p>
+    </div><!-- footer -->
+
+  </div><!-- witti -->
+</body>
+</html>

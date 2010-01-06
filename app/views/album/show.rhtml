@@ -1,0 +1,27 @@
+<h1><%= link_to(@photos.first.album.name, show_page_url(:url_name => @photos.first.album.gallery.url_name)) if @photos.first -%></h1>
+<script type="text/javascript">
+function startGallery() {
+var myGallery = new gallery($('myGallery'), {
+timed: false,
+//useHistoryManager: true,
+useReMooz: true
+//defaultTransition: "fadeslideleft"
+});
+//HistoryManager.start();
+//Slimbox.scanPage();
+}
+window.addEvent('domready', startGallery);
+</script>
+<div class="gallery">
+<div id="myGallery">
+<% @photos.each do |photo| %>
+	<div class="imageElement">
+		<h3><%= h photo.name -%></h3>
+		<p><%= h photo.description -%></p>
+		<%= link_to '', photo.file_url, :title => photo.name, :class => "open" -%>
+		<%= image_tag photo.gallery_image_url, :class => "full" -%>
+		<%= image_tag photo.thumbnail_url, :class => "thumbnail" -%>
+	</div>
+<% end %>
+</div>
+</div>

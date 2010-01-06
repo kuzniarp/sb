@@ -1,0 +1,52 @@
+<div id="menu">
+
+<%= link_to "Nowa strona", {:controller => 'subpage', :action => 'edit'}, :class => "create_link" %><br />
+<ul id="subpage_list_">
+<% Subpage.find(:all, :conditions => "parent_id is null", :order => 'page_order').each do |subpage| %>
+	<li class="subpage" id="subpage_<%= subpage.id -%>">
+        <div><%= link_to subpage.name, {:controller => 'subpage', :action => 'edit', :id => subpage.id}, :class => "label" %>
+		<span><%= link_to image_tag("/images/admin/add-child.png"), {:controller => 'subpage', :action => 'edit', :parent_id => subpage.id}, :class => "create_link", :title => "Dodaj podstronę" %>
+        <%= (subpage.is_a?(Gallery) and !subpage.albums.empty?) ? link_to_function(image_tag("/images/admin/remove.png"), "alert('Nie można usunąć galerii zawierającej albumy. Najpierw usuń albumy.')") : link_to(image_tag("/images/admin/remove.png"), {:controller => 'subpage', :action => 'delete', :id => subpage.id}, :confirm => "Jesteś pewien, że chcesz usunąć tę stronę?") %></span></div>
+		<% if subpage.class == Gallery %>
+			<ul id="album_list_<%= subpage.id %>">
+			<% subpage.albums.each do |album| %>
+				<li class="album" id="album_<%= album.id -%>">
+					<div><%= link_to album.name, :controller => 'album', :action => 'edit', :id => album.id %>
+					<%= !album.photos.empty? ? link_to_function(image_tag("/images/delete_btn.png"), "alert('Nie można usunąć albumu zawierającego zdjęcia. Najpierw usuń zdjęcia.')") : link_to(image_tag("/images/delete_btn.png"), {:controller => 'album', :action => 'delete', :id => album.id}, :confirm => "Jesteś pewien, że chcesz usunąć album?") %></div>
+				</li>
+			<% end %>
+			</ul>
+			<%= link_to "Nowy album", {:controller => 'album', :action => 'edit'}, :class => "create_link" %><br />
+        <% else %>
+			<ul id="subpage_list_<%= subpage.id %>">
+			<% subpage.children.each do |page| %>
+				<li class="album" id="page_<%= page.id -%>">
+					<div><%= link_to page.name, {:controller => 'subpage', :action => 'edit', :id => page.id}, :class => "label" %>
+                    <span><%= link_to image_tag("/images/admin/add-child.png"), {:controller => 'subpage', :action => 'edit', :parent_id => page.id}, :class => "create_link" %>
+                    <%= link_to(image_tag("/images/admin/remove.png"), {:controller => 'subpage', :action => 'delete', :id => page.id}, :confirm => "Jesteś pewien, że chcesz usunąć stronę?") %></span></div>
+                    <%= list_pages(page.children) unless page.children.empty? %>                   	
+				</li>
+			<% end %>
+			</ul>			
+		<% end %>
+	</li>
+<% end %>
+</ul>
+
+<%= sortable_element 'subpage_list_',
+      :complete => visual_effect(:highlight, 'list'),
+      :url => { :controller => "subpage", :action => "order" } %>
+
+<% Gallery.all.each do |gallery| %>
+<%= sortable_element "album_list_#{gallery.id}",
+      :complete => visual_effect(:highlight, 'list'), 
+      :url => { :controller => "album", :action => "order" } %>
+<% end %>
+
+<% Subpage.all(:conditions => "parent_id is null").each do |subpage| %>
+<%= sortable_element "subpage_list_#{subpage.id}",
+      :complete => visual_effect(:highlight, 'list'),
+      :url => { :controller => "subpage", :action => "order", :subpage_id => subpage.id } %>
+<% end %>
+
+</div>

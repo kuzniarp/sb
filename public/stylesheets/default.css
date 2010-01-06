@@ -1,0 +1,154 @@
+/*   ------------------------------------------------------------  */
+/*   ************************************************************  */
+/*   * Graphics and xhtml/css code                              *  */
+/*   * Copyright (c) 2007, Ondrej Pohorsky  All rights reserved *  */
+/*   *                                                          *  */
+/*   * author: Ondrej Pohorsky                                  *  */
+/*   * url:    http://www.poho.cz                               *  */
+/*   * mail:   poho@poho.cz                                     *  */
+/*   * icq:    190484844                                        *  */
+/*   *                                                          *  */
+/*   * This work is under BSD license                           *  */
+/*   ************************************************************  */
+/*   ------------------------------------------------------------  */
+
+/*
+------------------------- General 
+*/
+* {padding:0; margin:0; font-size:100%;}
+html, body {height:100%;}
+.cleaner {clear:both; height:1px; font-size:1px; line-height:1px;}
+.hidden {display:none}
+.noborder {border:none !important;}
+
+/*
+------------------------- Typography
+*/
+.grey {color:#999;}
+.red {color:#c00;}
+.green {color:#0c0;}
+.blue {color:#06c;}
+
+* {font-family:Tahoma, "Lucida Grande CE", lucida, sans-serif;}
+#witti {font-size:80%;}
+#header, #footer, #header a, #footer a {color:#fff;}
+#header a:hover {color:#ccc;}
+#header a:hover, #footer a:hover {text-decoration:none;}
+#menu ul li a {font-weight:bold; color:#fff; text-decoration:none;}
+#menu ul li ul li a {font-weight:normal;}
+#content h1, #content h2 {font-weight:normal;}
+#content h1 {font-size:170%; color:#389ccd;}
+#content h2 {font-size:150%; color:#75bbdd;}
+#content p {line-height:1.5em;}
+#content blockquote {font-style:italic; color:#666;}
+#content a {color:#06c;}
+#content a:hover {text-decoration:none;}
+#content .left em, #content .right em, #content .center em {text-align:center; color:#999;}
+#content table#list th, #content table.info th {color:#666;}
+#content fieldset legend {font-weight:bold;}
+#content .error {color:#d1481a;}
+#content .succes {color:#669900;}
+#content .question {color:#399ece;}
+
+/*
+------------------------- Witti
+*/
+#witti {position:relative; width:100%; /* Main width of system */ height:100%; min-height:100%; margin:0 auto; background:url('/images/admin/menu.png') top left repeat-y;}
+body>#witti {height:auto;}
+
+/*
+------------------------- Header
+*/
+#header {width:auto; height:89px; background:#000 url('/images/admin/header.jpg') top left repeat-x;}
+#header .logo, #header .userinfo {display:inline; margin:0 20px}
+#header .logo {width:103px; height:27px; float:left; margin-top:25px; background:url('/images/admin/logo.gif') top left no-repeat;}
+#header .logo span {display:none;}
+#header .userinfo {float:right; margin-top:35px;}
+
+/*
+------------------------- Main
+*/
+#main {padding-bottom:20px;}
+
+/*
+------------------------- Menu
+*/
+#menu {width:292px; float:left; margin-right:20px; background:url('/images/admin/menu_top.png') top left no-repeat;}
+#menu ul {margin-top:8px; list-style-type:none;}
+#menu ul li img {border: none;}
+#menu ul li ul {margin-top:0;}
+#menu ul li {padding-left:10px;border-top:1px solid #5FB0D8;}
+#menu ul li div{height:24px;padding-top:6px;}
+#menu ul li span{float:right;margin-right:10px;}
+#menu ul li ul {}
+#menu ul li a.label { height:20px; padding:5px 20px 0 10px; }
+#menu ul li a.label:hover {color:#339;}
+#menu a.create_link {color:#ddd;font-style:italic;font-weight:normal;}
+#menu a.create_link:hover {color:#339;}
+/*
+------------------------- Content
+*/
+#content {padding:10px 19px 0 312px;}
+#content h1, #content h2, #content p, #content .center, #content blockquote, #content ul, #content ol, #content table, 
+  #content form, #content fieldset, #content .error, #content .succes, #content .question, #content .halfes {margin-bottom:16px;}
+#content blockquote {padding:16px; margin-left:20px; border-left:4px solid #e5e5e5;}
+#content .important {padding:16px; padding-bottom:0; border:1px dashed #399ece; background-color:#f3f9fc;}
+#content .print {position:absolute; top:99px; right:19px; width:20px; height:20px; background:url('/images/admin/print.gif') top left no-repeat;}
+#content .print a {display:block; width:100%; height:100%;}
+#content .print em {display:none;}
+
+/* Pictures floating on left, right and center */
+#content img {padding:5px; margin-top:5px; border:1px solid #ccc;}
+#content .left {float:left; margin-right:10px;}
+#content .right {float:right; margin-left:10px;}
+#content .center {text-align:center;}
+#content .left em, #content .right em, #content .center em {display:block; margin-top:5px;}
+
+/* Lists */
+#content ul, #content ol {margin-left:20px; list-style-position:inside;}
+#content ul {list-style-type:square;}
+#content ul li, #content ol li {margin-top:5px;}
+#content ul ul {list-style-type:circle;}
+
+/* Tables */
+#content table {width:98%;}
+#content table#list, #content table.info {border:1px solid #e0e0e0; border-collapse:collapse;}
+#content table#list th {border-bottom:1px solid #e0e0e0;}
+#content table#list th, #content table.info th {background-color:#f5f5f5; }
+#content table#list th, #content table#list td {padding:5px 10px; text-align:center;}
+#content table#list th.left, #content table#list td.left {float:none; text-align:left;}
+#content table#list tr.even td {background-color:#ecf5fb;}
+#content table.info th, #content table.info td {border:1px solid #ccc;}
+#content table.info th, #content table.info td {padding:5px 10px; text-align:left;}
+#content table.info th.center, #content table.info td.center {text-align:center;}
+
+/* Form */
+#content form fieldset {padding:10px 20px; _padding-top:0; border:1px solid #e0e0e0;}
+#content form fieldset legend {padding:0 10px; _margin-bottom:10px;}
+#content form fieldset input, #content fieldset select {margin-top:3px; margin-bottom:10px;}
+#content form fieldset textarea {width:95%;}
+#content form fieldset label input {margin-bottom:0;}
+#content form p.submit input {padding:0 10px; margin-bottom:0;}
+
+/* Messages */
+#content .error, #content .succes, #content .question {border-width:1px; border-style:solid; padding:16px 20px 0 60px;}
+#content .error {border-color:#d1481a; background:#fff1ec url('/images/admin/error.gif') center left no-repeat;}
+#content .succes {border-color:#669900; background:#f9ffec url('/images/admin/succes.gif') center left no-repeat;}
+#content .question {border-color:#399ece; background:#f3f9fc url('/images/admin/question.gif') center left no-repeat;}
+#content .question input {padding:0 10px;}
+
+/* Halfes */
+#content .halfes {width:98%; background:url('/images/admin/separator.gif') top center repeat-y;}
+#content .halfes .leftcol {float:left; width:45%; }
+#content .halfes .rightcol {float:right; width:45%; }
+
+/* Right column */
+#content .right-column {width:98%;}
+#content .right-column .rightcol {float:right; width:200px; padding-left:20px; margin-left:20px; background:url('/images/admin/separator.gif') top left repeat-y;}
+#content .right-column .leftcol {padding-right:240px;}
+
+/*
+------------------------- Foot
+*/
+#footer {position:absolute; bottom:0; left:0; width:auto; height:23px; margin:0 0 0 10px;}
+

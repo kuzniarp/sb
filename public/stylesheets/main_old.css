@@ -1,0 +1,101 @@
+/* Basic styles */
+*{margin:0;padding:0}
+body{line-height:1}
+img,fieldset{border:0}
+img{vertical-align:bottom}
+a,a:hover{cursor:pointer;text-decoration:none;outline:none}
+a:hover{border:0} /* IE fix */
+ul{list-style:none}
+option{padding:0 .5em 0 1px}
+table{border-collapse:collapse;border-spacing:0}
+td,th{vertical-align:top;text-align:left;font-weight:normal}
+address{font-style:normal}
+h1,h2,h3,h4,h5,h6{font-size:1em;font-weight:bold}
+.clear{clear:both}
+
+/* fonts */
+body,input,textarea,select,td{color:#66a;font-size:12px;font-family:helvetica,verdana,arial,sans-serif;background:#eee;}
+div.wrapper {
+	margin: auto;
+	width:760px;
+}
+
+/* div.Table_01 div{border: 1px solid #ffdcba;} */
+
+div.logo {
+    position:relative;
+    top:70px;
+    left:22px;
+    line-height:normal;
+}
+div.logo a{font-size: 24px; color: #77b;}
+div.logo a:hover{color: #99f;}
+
+div.menu {
+    position:relative;
+    top:161px;
+    font-size:14px;
+    line-height:normal;
+}
+div.menu ul.menu{float:left;margin-right:10px;}
+div.menu ul.menu li{float:left;margin: 0 10px;}
+div.menu ul.menu li a{font-size: 14px; color: #77b;}
+div.menu ul.menu li a:hover{color: #99f;}
+
+div.header {
+	width:760px;
+	height:230px;
+	background: #ddd;
+}
+
+div.header p {padding: 60px 100px 100px 189px;}
+div.header p a {font-style: italic; font-size: 29px; color: #FFE18A;}
+
+div.main {
+	width:760px;
+	height: auto;
+	min-height:250px;
+	background: #ddd;
+}
+div.page{
+    padding:0 20px;
+}
+
+div.content {
+	width:720px;
+	height: auto;
+	min-height:250px;
+    padding:0px 20px;
+    line-height:20px;
+}
+	
+div.content p{
+	line-height: 20px;
+	text-align: justify;
+    padding:5px 0;
+}
+div.content ul{
+    padding-left:10px;
+    list-style:inside disc;
+}
+
+div.content h1{background: url(/images/h_bgr.png) no-repeat; padding-bottom: 5px; font-size: 13px;}
+div.content h1 a{color:#C6A6A6;}
+
+div.footer {
+	width:760px;
+	height:29px;
+	background: #ddd;
+}
+
+.index_gallery{
+   list-style-type:none !important;
+   list-style-position: outside !important;
+   padding:0 !important;
+}
+.thumb_bgr {margin: 8px;}
+.thumb_bgr li{background: url(/images/thumb_bgr.png); height: 102px; width: 156px; float: left; margin: 6px 5px; padding: 7px;}
+.gallery_links{text-align:center;font-size:14px;line-height:22px;}
+.gallery_links a{color: #B60D00;font-style:italic;}
+.gallery_links a:hover{color:#fff;}
+.aagallery{background: url(/images/gallery_bgr.png) no-repeat;padding:12px;margin: 0 0 10px 38px;}

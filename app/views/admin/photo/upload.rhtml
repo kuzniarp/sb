@@ -1,0 +1,7 @@
+﻿<% form_tag({:controller => 'photo', :action => 'upload'}, {:multipart => true}) do -%>
+	<% 5.times do |i| %>
+		<%= file_field_tag "files[#{i}]" -%><br />
+	<% end %>
+	<%= hidden_field_tag 'album_id', params[:album_id] -%>
+	<%= submit_tag 'Wyślij' -%>
+<% end %>

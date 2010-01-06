@@ -1,0 +1,62 @@
+body,input,textarea,select,td{color:#000;font-size:12px;font-family:arial,sans-serif;background-color:#fff;}
+div.glowna-slices2mini-00_admin ul{margin-left:10px;}
+div.glowna-slices2mini-00_admin li{padding:3px 2px 2px; margin: 4px 0;}
+
+div.Table_01_admin {
+	margin: auto;
+	width:1000px;
+    background-color:#e5e0e0;
+}
+
+/* div.Table_01_admin div{border: 1px solid red;} */
+
+div.glowna-slices2mini-00_admin {
+	width:180px;
+	height: auto;
+	min-height:300px;
+	float:left;
+	/* padding-left: 122px; */
+    font-size:14px;
+    line-height:17px;
+    padding:0 10px;
+}
+
+div.glowna-slices2mini-01_admin {
+	width:1000px;
+	height:50px;
+    border-bottom: 1px solid #aaa;
+}
+
+div.glowna-slices2mini-02_admin {
+	width:780px;
+	height: auto;
+	min-height:300px;
+	margin-left:200px;
+	padding:0 10px;
+    border-left: 1px solid #aaa;
+    line-height:16px;
+}
+
+div.glowna-slices2mini-03_admin {
+	width:1000px;
+	height:50px;
+    border-top: 1px solid #aaa;
+}
+li.subpage{background-color:#aac;}
+li.album{background-color:#cdceff;}
+
+div.glowna-slices2mini-00_admin a{color:#322;}
+div.glowna-slices2mini-00_admin a:hover{color:#fff;}
+
+div.glowna-slices2mini-02_admin h3{font-size:14px;font-weight:bold;padding:5px 0;}
+div.glowna-slices2mini-02_admin label{font-size:13px;font-weight:bold;padding:3px 0;}
+div.glowna-slices2mini-02_admin form input,textarea,select{border:1px solid #aaa;}
+
+div.album{width:275px;float:left;}
+div.album_photos{margin-left:280px;width:500px;}
+div.album_photos th{font-weight:bold;}
+div.album_photos td{padding:3px;background-color:#e5e0e5;border-top: 1px solid #aaa;}
+.login{margin:50px auto;padding-top:5px;width:400px;height:200px;background-color:#ddd;}
+.login form{margin:0 0 0 110px;}
+.login form input,textarea,select{border:1px solid #aaa;}
+.login h2{color:teal;text-align:center;}
