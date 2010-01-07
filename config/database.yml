@@ -10,7 +10,7 @@ test:
 
 production:
   adapter: mysql
-  database: kuzniarp_dobremaszyny
+  database: kuzniarp_saxonband
   username: kuzniarp
   password: mPLX8XbpFjbqR9VG
   host: 10.132.2.150
