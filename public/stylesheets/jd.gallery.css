@@ -1,7 +1,7 @@
 #myGallery, #myGallerySet, #flickrGallery
 {
-	width: 720px;
-	height: 445px;
+	width: 614px;
+	height: 437px;
 	z-index:5;
 	border: 0px solid #000;
 }
@@ -38,7 +38,6 @@
 {
 	width: 100%;
 	height: 100%;
-	background-color: #250E0E;
 	background-repeat: no-repeat;
 	background-position: center center;
 	background-image: url('/images/smoothgallery/loading-bar-black.gif');
@@ -65,8 +64,7 @@
 	margin: 0px;
 	left: 0;
 	bottom: 0;
-	height: 80px;
-	background: #333;
+	height: 25px;
 	color: #fff;
 	text-indent: 0;
 	overflow: hidden;
@@ -160,7 +158,7 @@
 .jdGallery .carousel .carouselInner .thumbnail, .jdExtCarousel .carouselInner .thumbnail
 {
 	cursor: pointer;
-	background: #250E0E;
+	background: #000;
 	background-position: center center;
 	float: left;
 	border: solid 1px #fff;
@@ -309,7 +307,6 @@
 	position: absolute;
 	top: 0;
 	left: 0;
-	background: #250E0E;
 }
 
 .jdGallery .gallerySelector h2

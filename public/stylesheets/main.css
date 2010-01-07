@@ -10,29 +10,29 @@ option{padding:0 .5em 0 1px}
 table{border-collapse:collapse;border-spacing:0}
 td,th{vertical-align:top;text-align:left;font-weight:normal}
 address{font-style:normal}
-h1,h2,h3,h4,h5,h6{font-size:1em;font-weight:bold}
+h1,h2,h3,h4,h5,h6{font-size:1.2em;font-weight:bold}
 .clear{clear:both}
 
 /* fonts */
-body,input,textarea,select,td{color:#66a;font-size:12px;font-family:"Lucida Sans Unicode",helvetica,verdana,arial,sans-serif;background:#eee;}
-body{background:#C8C8C8 url(/images/body_bg.png) repeat-x;}
-#wrapper{width:920px;height:auto;margin:0 auto;position:relative;}
-#header{background:url(/images/header_bg.png) no-repeat;width:880px;height:200px;padding:20px 20px 10px 20px;}
-#header #menu {position:relative;top:177px;padding:0 10px;font-size:16px;}
-#header #menu a{color:#d8d8d8;}
-#header #menu a:hover{color:#d8ffff;}
-#header #menu li{float:left;margin:0 20px;}
-#main{background:url(/images/main_bg.png) repeat-y;width:880px;height:auto;min-height:200px;padding:0 20px;line-height:1.3em;}
-h1,h2{background:#e8e8f8;padding:2px 3px;}
+body,input,textarea,select,td{color:#a6a;font-size:12px;font-family:"Lucida Sans Unicode",helvetica,verdana,arial,sans-serif;background:#eee;}
+body{background:#000;}
+#wrapper{width:800px;height:auto;margin:0 auto;position:relative;}
+#header{width:800px;height:170px;}
+#menu {font-size:16px;margin:25px 0;}
+#menu a{color:#d8d8d8;}
+#menu a:hover{color:#d0f;}
+#menu ul {float:right;}
+#menu li{float:left;margin:0 20px;}
+#main{background:url(/images/main_bg.png) no-repeat;width:654px;height:567px;padding:15px 73px 48PX;line-height:1.3em;}
 #main #sidebar {width:220px;margin-right:10px;float:left;}
 #main #sidebar block{border:1px solid #ddf;}
 #main #sidebar ul{text-align:center;margin-top:10px;}
 #main #sidebar li{margin:5px;}
 #main #sidebar img{padding:5px;border:1px solid #ddf;}
-#main #content {width:650px;overflow:hidden;float:left;}
-#main .page {margin:4px 0;color:#66a;font-size:12px;font-family:"Lucida Sans Unicode",helvetica,verdana,arial,sans-serif;}
-#main #sidebar p{margin:2px 0 4px;}
-#main #content p{margin:2px 0 4px;}
+#main #content {padding:20px;overflow:hidden;float:left;line-height:1.5em;}
+#main #content a{color:#d8d8d8;}
+#main #content a:hover{color:#d0f;}
+#main .page {margin:4px 0;color:#a6a;font-size:13px;font-family:"Lucida Sans Unicode",helvetica,verdana,arial,sans-serif;}
+#main #sidebar p{margin:3px 0 5px;}
+#main #content p{margin:3px 0 5px;}
 #footer{background:url(/images/footer_bg.png) no-repeat;width:880px;height:60px;padding:0 20px 20px 20px;}
-
-

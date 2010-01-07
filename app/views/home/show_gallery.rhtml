@@ -4,7 +4,7 @@
     <div class="gallerySelectorWrapper">
       <div class="gallerySelectorInner">
         <% Album.find(:all, :include => :photos, :conditions => "photos.album_id is not null", :order => 'album_order').each_with_index do |album,i| %>
-          <div class="galleryButton" style="width: 331px;" onclick="window.location.href='<%= show_album_url(album.get_link_options)-%>'">
+          <div class="galleryButton" style="width: 280px;" onclick="window.location.href='<%= show_album_url(album.get_link_options)-%>'">
             <div class="preview" style="background-image: url(<%= album.photos.first.thumbnail_url -%>);"/></div>
               <h3><%= album.name -%></h3>
               <p class="info">Zdjęć: <%= album.photos.count -%></p>
