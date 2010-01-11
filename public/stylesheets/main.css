@@ -29,10 +29,10 @@ body{background:#000;}
 #main #sidebar ul{text-align:center;margin-top:10px;}
 #main #sidebar li{margin:5px;}
 #main #sidebar img{padding:5px;border:1px solid #ddf;}
-#main #content {padding:20px;overflow:hidden;float:left;line-height:1.5em;}
+#main #content {padding:20px;overflow:hidden;float:left;line-height:1.5em;height:440px;width:613px;}
 #main #content a{color:#d8d8d8;}
 #main #content a:hover{color:#d0f;}
-#main .page {margin:4px 0;color:#a6a;font-size:13px;font-family:"Lucida Sans Unicode",helvetica,verdana,arial,sans-serif;}
+#main .page {margin:4px 0;color:#a6a;font-size:13px;font-family:"Lucida Sans Unicode",helvetica,verdana,arial,sans-serif;height:100%;width:100%;}
 #main #sidebar p{margin:3px 0 5px;}
 #main #content p{margin:3px 0 5px;}
 #footer{background:url(/images/footer_bg.png) no-repeat;width:880px;height:60px;padding:0 20px 20px 20px;}
