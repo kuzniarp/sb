@@ -11,9 +11,6 @@
 <%= javascript_include_tag 'jd.gallery' %>
 <%= javascript_include_tag 'jd.gallery.transitions' %>
 <%= javascript_include_tag 'ReMooz' %>
-<%= javascript_include_tag 'jquery-1.2.6.min' %>
-<%= javascript_include_tag 'jScrollPane-1.2.3.min' %>
-<%= javascript_include_tag 'jquery.mousewheel' %>
 
 <% #  stylesheet_link_tag 'style' %>
 <%= stylesheet_link_tag 'main' %>
@@ -34,25 +31,19 @@
     </object>
     </div>
 	<div id="main">
-        <div id="menu">
-          <ul>
-			<% Subpage.find(:all, :conditions => "parent_id is null", :order => 'page_order').each do |subpage| %>
-				<li><%= link_to subpage.name, show_page_url(:url_name => subpage.url_name) -%></li>
-			<% end %>
-		  </ul>
+      <div id="menu">
+        <ul>
+          <% Subpage.find(:all, :conditions => "parent_id is null", :order => 'page_order').each do |subpage| %>
+			<li><%= link_to subpage.name, show_page_url(:url_name => subpage.url_name) -%></li>
+          <% end %>
+		</ul>
         <div class="clear"></div>
-    </div>
-
-	  <div id="content">
-        <%= yield -%>
       </div>
-      <script>
-      $(function(){
-        $('.page').jScrollPane();
-      });
-      </script>
+      <div id="content">
+        <%= yield -%>
+      </div>      
       <div class="clear"></div>
-	</div>		
+    </div>
   </div>
 </body>
 </html>
