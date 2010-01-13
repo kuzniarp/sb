@@ -38,15 +38,19 @@
       :url => { :controller => "subpage", :action => "order" } %>
 
 <% Gallery.all.each do |gallery| %>
+<% unless gallery.albums.empty? %>
 <%= sortable_element "album_list_#{gallery.id}",
       :complete => visual_effect(:highlight, 'list'), 
       :url => { :controller => "album", :action => "order" } %>
 <% end %>
+<% end %>
 
 <% Subpage.all(:conditions => "parent_id is null").each do |subpage| %>
+<% unless subpage.children.empty? %>
 <%= sortable_element "subpage_list_#{subpage.id}",
       :complete => visual_effect(:highlight, 'list'),
       :url => { :controller => "subpage", :action => "order", :subpage_id => subpage.id } %>
+<% end %>
 <% end %>
 
 </div>

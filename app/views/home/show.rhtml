@@ -11,6 +11,13 @@
 	<% end %>
 	</ul>
 <% end %>
+<% if @page.is_a?(Mediapage)%>
+	<ul class="songs">
+	<% @page.songs.each do |song| %>
+		<li><%= song.name -%></li>
+	<% end %>
+	</ul>
+<% end %>
 <% unless @page.children.empty? %>
   <ul>
   <% @page.children.each do |page| %>

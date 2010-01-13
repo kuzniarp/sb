@@ -1,5 +1,6 @@
 <div class="album">
 <% form_tag :controller => 'album', :action => 'edit' do %>
+  <fieldset><legend>Edycja albumu</legend>
     <label>Nazwa:</label><br />
 	<%= text_field 'album', 'name' %><br />
     <label>Opis:</label><br />
@@ -8,6 +9,7 @@
 	<%= select 'album', 'gallery_id', Gallery.find(:all).map{|g| [g.name, g.id]} %><br />
 	<%= hidden_field 'album', 'id' -%>
 	<%= submit_tag 'Zapisz' %>
+  </fieldset>
 <% end %>
 	<h3>Meta tagi</h3>
 	<label>Tytuł:</label><br />
@@ -19,10 +21,10 @@
     <br /><label>Słowa kluczowe:</label><br />
 	<span id="meta_tag_keywords"><%= @album.meta_tag.keywords -%></span>
 	<%= in_place_editor "meta_tag_keywords", {:url => {:controller => "album", :action => "update_meta_tag", :attribute => 'keywords', :album_id => @album.id}, :cols => 40, :rows => 3} %><br />
-	<%= link_to_if params[:id], 'Wrzuć zdjęcia', :controller => 'photo', :action => 'upload', :album_id => @album.id -%>
+	<%= link_to_if params[:id], 'Dodaj zdjęcia', :controller => 'photo', :action => 'upload', :album_id => @album.id -%>
 </div>
 <div class="album_photos">
-<table>
+<table id="list">
   <tr>
     <th>Nazwa</th>
     <th>Zdjęcie</th>
@@ -30,7 +32,7 @@
     <th></th>
   </tr>
 	<% @album.photos.each do |photo| %>
-	<tr>
+	<tr class="<%= cycle('odd','even') %>">
 		<td>
           <span id="name_<%= photo.id -%>"><%= photo.name.to_s == '' ? 'pusta nazwa...' : photo.name -%></span>
           <%= in_place_editor "name_#{photo.id}", {:url => url_for(:controller => "photo", :action => "update_name", :id => photo.id)} %>

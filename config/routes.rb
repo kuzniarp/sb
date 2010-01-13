@@ -36,6 +36,9 @@ ActionController::Routing::Routes.draw do |map|
   # See how all your routes lay out with "rake routes"
 
   # Install the default routes as the lowest priority.
+  map.namespace :admin do |admin|
+    admin.resources :songs
+  end
   map.connect 'sitemap.xml', :controller => "sitemap", :action => "sitemap" 
   map.connect '/', :controller => 'home', :action => 'index'
   map.connect '/admin', :controller => 'admin/subpage'

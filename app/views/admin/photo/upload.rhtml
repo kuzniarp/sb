@@ -1,7 +1,9 @@
 ﻿<% form_tag({:controller => 'photo', :action => 'upload'}, {:multipart => true}) do -%>
+  <fieldset><legend>Wybierz pliki</legend>
 	<% 5.times do |i| %>
 		<%= file_field_tag "files[#{i}]" -%><br />
 	<% end %>
 	<%= hidden_field_tag 'album_id', params[:album_id] -%>
 	<%= submit_tag 'Wyślij' -%>
+  </fieldset>
 <% end %>

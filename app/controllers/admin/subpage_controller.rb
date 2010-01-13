@@ -31,7 +31,7 @@ class Admin::SubpageController < ApplicationController
 			Subpage.find_by_id(id).update_attribute(:page_order,i)
 		end
 		render :nothing => true	
-    end
+  end
 	
 	def delete
 		Subpage.find_by_id(params[:id]).destroy

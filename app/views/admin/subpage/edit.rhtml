@@ -1,4 +1,5 @@
 <% form_tag({:controller => 'subpage', :action => 'edit'}, {:multipart => true}) do %>
+  <fieldset><legend>Edycja strony</legend>
     <label>Nazwa:</label><br />
 	<%= text_field 'subpage', 'name' %><br />
     <label>Nagłówek:</label><br />
@@ -8,16 +9,44 @@
     <%= file_field 'subpage', 'logo' %><br />
     <label>Zawartość:</label><br />
 	<%= fckeditor_textarea("subpage", "description", :toolbarSet => 'Simple', :width => '650px', :height => '250px') %><br />
-    <% if params[:parent_id] || @subpage.parent_id %>
-      <%= hidden_field 'subpage', 'type', {:value => 'Staticpage'} %>
-    <% else %>
-      <label>Typ:</label><br />
-      <%= select 'subpage', 'type', [["Strona statyczna", "Staticpage"], ["Galeria", "Gallery"]] %><br />
-    <% end %>
+    <label>Typ:</label><br />
+    <%= select 'subpage', 'type', [["Strona statyczna", "Staticpage"], ["Galeria", "Gallery"], ["Media", "Mediapage"]] %><br />
 	<%= hidden_field 'subpage', 'id' -%>
     <%= hidden_field 'subpage', 'parent_id', {:value => params[:parent_id]} -%>
 	<%= submit_tag 'Zapisz' %>
+  </fieldset>
 <% end %>
+
+<% if @subpage.is_a?(Mediapage) && params[:id] %>
+  <h3>Dodane pliki</h3>
+  <ul id="song_list">
+    <% @subpage.songs.each do |song| %>
+    <li id="song_<%= song.id %>">
+      <span>P</span>
+      <span id="name_<%= song.id -%>"><%= song.name.to_s == '' ? 'pusta nazwa...' : song.name -%></span>
+      <%= in_place_editor "name_#{song.id}", {:url => url_for(:controller => "songs", :action => "update_name", :id => song.id)} %>
+      <span id="description_<%= song.id -%>"><%= song.description.to_s == '' ? 'pusty opis...' : song.description -%></span>
+      <%= in_place_editor "description_#{song.id}", {:url => url_for(:controller => "songs", :action => "update_description", :id => song.id)} %>
+    </li>
+    <% end %>
+  </ul>
+  <% form_for [:admin, Song.new], :html => { :multipart => true } do |f| %>
+    <fieldset><legend>Dodaj plik</legend>
+      <label>Tytuł:</label>
+      <%= f.text_field :name %>
+      <label>Plik:</label>
+      <%= f.file_field :clip %>
+      <label>Opis:</label>
+      <%= f.text_field :description %>
+      <%= f.hidden_field :mediapage_id, :value => params[:id] %>
+      <%= f.submit 'Dodaj' %>
+    </fieldset>
+  <% end %>
+  <%= sortable_element "song_list",
+      :complete => visual_effect(:highlight, 'list'),
+      :url => { :controller => "songs", :action => "order" } %>
+<% end %>
+
 <h3>Meta tagi</h3><br />
 <label>Tytuł:</label><br />
 <span id="meta_tag_title"><%= @subpage.meta_tag.title -%></span>
