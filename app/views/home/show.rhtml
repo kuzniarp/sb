@@ -1,6 +1,9 @@
 <%= javascript_include_tag 'jquery-1.2.6.min' %>
 <%= javascript_include_tag 'jScrollPane-1.2.3.min' %>
 <%= javascript_include_tag 'jquery.mousewheel' %>
+<%= javascript_include_tag 'prototype' %>
+<%= javascript_include_tag 'audio_player' %>
+
 <h1><%= @page.header %></h1>
 <div class="page">
 <%= @page.description %>
@@ -14,9 +17,22 @@
 <% if @page.is_a?(Mediapage)%>
 	<ul class="songs">
 	<% @page.songs.each do |song| %>
-		<li><%= song.name -%></li>
+		<li><%= song.name -%>
+          <span class="play">
+            <%= link_to_function image_tag("audio_player_stop_btn.png"), "window.audioPlayer.stop()", :style => "display:none" %>
+            <%= link_to_function image_tag("audio_player_play_btn.png"), "var track = new Track('#{escape_javascript(song.clip.url)}', this, $(this).previous('a')); window.audioPlayer.play(track);" %>
+          </span>
+        </li>
 	<% end %>
-	</ul>
+    </ul>
+    <object class="playerpreview" id="audioPlayer" type="application/x-shockwave-flash" data="/images/player_mp3_js.swf" width="1" height="1">
+      <param name="movie" value="/images/player_mp3_js.swf" />
+      <param name="AllowScriptAccess" value="always" />
+      <param name="FlashVars" value="listener=audioPlayer&amp;interval=500" />
+    </object>
+    <script type="text/javascript">
+      window.audioPlayer.setPlayer($('audioPlayer'));
+    </script>
 <% end %>
 <% unless @page.children.empty? %>
   <ul>

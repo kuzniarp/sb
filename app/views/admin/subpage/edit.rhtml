@@ -1,3 +1,4 @@
+<%= javascript_include_tag 'audio_player' %>
 <% form_tag({:controller => 'subpage', :action => 'edit'}, {:multipart => true}) do %>
   <fieldset><legend>Edycja strony</legend>
     <label>Nazwa:</label><br />
@@ -22,7 +23,12 @@
   <ul id="song_list">
     <% @subpage.songs.each do |song| %>
     <li id="song_<%= song.id %>">
-      <span>P</span>
+      <span>
+        <span class="play">
+          <%= link_to_function image_tag("audio_player_stop_btn.png"), "window.audioPlayer.stop()", :style => "display:none" %>
+          <%= link_to_function image_tag("audio_player_play_btn.png"), "var track = new Track('#{escape_javascript(song.clip.url)}', this, $(this).previous('a')); window.audioPlayer.play(track);" %>
+        </span>
+      </span>
       <span id="name_<%= song.id -%>"><%= song.name.to_s == '' ? 'pusta nazwa...' : song.name -%></span>
       <%= in_place_editor "name_#{song.id}", {:url => url_for(:controller => "songs", :action => "update_name", :id => song.id)} %>
       <span id="description_<%= song.id -%>"><%= song.description.to_s == '' ? 'pusty opis...' : song.description -%></span>
@@ -30,6 +36,14 @@
     </li>
     <% end %>
   </ul>
+  <object class="playerpreview" id="audioPlayer" type="application/x-shockwave-flash" data="/images/player_mp3_js.swf" width="1" height="1">
+  <param name="movie" value="/images/player_mp3_js.swf" />
+  <param name="AllowScriptAccess" value="always" />
+  <param name="FlashVars" value="listener=audioPlayer&amp;interval=500" />
+  </object>
+  <script type="text/javascript">
+    window.audioPlayer.setPlayer($('audioPlayer'));
+  </script>
   <% form_for [:admin, Song.new], :html => { :multipart => true } do |f| %>
     <fieldset><legend>Dodaj plik</legend>
       <label>Tytuł:</label>
