@@ -1,8 +1,6 @@
 <%= javascript_include_tag 'jquery-1.2.6.min' %>
 <%= javascript_include_tag 'jScrollPane-1.2.3.min' %>
 <%= javascript_include_tag 'jquery.mousewheel' %>
-<%= javascript_include_tag 'prototype' %>
-<%= javascript_include_tag 'audio_player' %>
 
 <h1><%= @page.header %></h1>
 <div class="page">
@@ -15,6 +13,8 @@
 	</ul>
 <% end %>
 <% if @page.is_a?(Mediapage)%>
+  <%= javascript_include_tag 'prototype' %>
+  <%= javascript_include_tag 'audio_player' %>
 	<ul class="songs">
 	<% @page.songs.each do |song| %>
 		<li><%= song.name -%>
