@@ -2,7 +2,7 @@ class Album < ActiveRecord::Base
 	include ActionView::Helpers::SanitizeHelper
 	validates_presence_of :name
 	validates_uniqueness_of :name
-	has_many :photos, :dependent => :destroy
+	has_many :photos, :dependent => :destroy, :order => :photo_order
 	belongs_to :gallery
 	has_one :meta_tag, :as => :content
 	

@@ -4,7 +4,8 @@ class Photo < ActiveRecord::Base
 	before_update :update_url_name
 	after_save :write_file, :update_photo_data
 	after_destroy :delete_file
- 
+  before_save :set_photo_order
+
 	PHOTO_STORAGE_PATH = "#{RAILS_ROOT}/public/uploads/photos"
 	THUMBNAIL_WIDTH = 100
 	THUMBNAIL_HEIGHT = 75 #66
@@ -12,7 +13,13 @@ class Photo < ActiveRecord::Base
 	GALLERY_IMAGE_HEIGHT = 345 #307
 	FULL_IMAGE_WIDTH = 800
 	FULL_IMAGE_HEIGHT = 600 #528
-	
+
+  def set_photo_order
+    unless self.photo_order
+      self.photo_order = self.album.photos.count
+    end
+  end
+
 	def update_url_name
 		self.url_name = UnicodeNormalizer.normalize self.name
 	end

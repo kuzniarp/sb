@@ -110,6 +110,12 @@ body>#witti {height:auto;}
 #content ul li, #content ol li {margin-top:5px;}
 #content ul ul {list-style-type:circle;}
 
+/* Sortable */
+#content ul.sortable {margin:0; list-style-position:inside;}
+#content ul.sortable {list-style-type:none;}
+#content ul.sortable li {border-bottom:1px solid #e0e0e0;height:65px;}
+#content ul.sortable div {float:left;width:25%;}
+
 /* Tables */
 #content table {width:100%;}
 #content table#list, #content table.info {border:1px solid #e0e0e0; border-collapse:collapse;}

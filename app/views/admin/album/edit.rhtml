@@ -26,28 +26,34 @@
 <div class="album_photos">
 <table id="list">
   <tr>
-    <th>Nazwa</th>
-    <th>Zdjęcie</th>
-    <th>Opis</th>
-    <th></th>
+    <td>Nazwa</td>
+    <td>Zdjęcie</td>
+    <td>Opis</td>
+    <td>Usuń</td>
   </tr>
+</table>
+<ul id="photo_list" class="sortable">
 	<% @album.photos.each do |photo| %>
-	<tr class="<%= cycle('odd','even') %>">
-		<td>
+	<li class="<%= cycle('odd','even') %>" id="photo_<%= photo.id %>">
+		<div>
           <span id="name_<%= photo.id -%>"><%= photo.name.to_s == '' ? 'pusta nazwa...' : photo.name -%></span>
           <%= in_place_editor "name_#{photo.id}", {:url => url_for(:controller => "photo", :action => "update_name", :id => photo.id)} %>
-        </td>
-        <td>
+        </div>
+        <div>
           <%= image_tag photo.thumbnail_url, :height => 40 -%>
-        </td>
-        <td>
+        </div>
+        <div>
           <span id="description_<%= photo.id -%>"><%= photo.description.to_s == '' ? 'pusty opis...' : photo.description -%></span>
           <%= in_place_editor "description_#{photo.id}", {:url => url_for(:controller => "photo", :action => "update_description", :id => photo.id), :cols => 60, :rows => 4 } %>
-        </td>
-        <td>
+        </div>
+        <div>
           <%= link_to 'Usuń', {:controller => 'photo', :action => 'delete', :id => photo.id, :album_id => @album.id}, :confirm => "Jesteś pewien?" -%>
-        </td>
-	</tr>
+        </div>
+        <div class="cleaner" style="width:0;"></div>
+	</li>
 	<% end %>
-</table>
+</ul>
+<%= sortable_element "photo_list",
+      :complete => visual_effect(:highlight, 'list'),
+      :url => { :controller => "photo", :action => "order" } %>
 </div>

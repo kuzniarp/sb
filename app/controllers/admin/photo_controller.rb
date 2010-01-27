@@ -32,4 +32,12 @@ class Admin::PhotoController < ApplicationController
 		@photo.send('update')
 		render :layout => false, :inline => "<%= @photo.description.to_s == '' ? 'pusty opis...' : @photo.description %>" 
 	end
+
+  def order
+		params["photo_list"].each_with_index do |id,i|
+			photo = Photo.find_by_id(id)
+      photo.update_attribute(:photo_order,i) if photo
+		end
+		render :nothing => true
+ end
 end
